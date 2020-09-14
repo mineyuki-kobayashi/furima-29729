@@ -45,7 +45,7 @@
 | postage_id       | integer    | null: false                    |
 | source_id        | integer    | null: false                    |
 | schedule_id      | integer    | null: false                    |
-| price_id         | integer    | null: false                    |
+| price　　         | integer    | null: false                    |
 
 ## Association
 
@@ -58,7 +58,7 @@
 | -------------- | ---------- | ------------------------------ |
 | list           | reference  | null: false, foreign_key: true |
 | postal         | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | address        | string     | null: false                    |
 | building       | string     |                                |
