@@ -4,16 +4,17 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| id       | string | null: false |
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| first_name | string | null: false |
+| last_name  | string | null: false |
+| birthday   | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
 
 ## Association
 
-- has_many :lists
+- has_one :list
 - has_many :items
 
 ## lists テーブル
@@ -25,8 +26,8 @@
 
 ## Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :purchases
 
 ## items テーブル
@@ -34,33 +35,32 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| item_image       | string     | null: false                    |
 | item_name        | string     | null: false                    |
-| item_explanation | string     | null: false                    |
-| item_category    | string     | null: false                    |
-| item_status      | string     | null: false                    |
-| postage          | string     | null: false                    |
-| source           | string     | null: false                    |
-| schedule         | string     | null: false                    |
-| price            | string     | null: false                    |
+| item_explanation | text       | null: false                    |
+| item_category    | integer    | null: false                    |
+| item_status      | integer    | null: false                    |
+| postage          | integer    | null: false                    |
+| source           | integer    | null: false                    |
+| schedule         | integer    | null: false                    |
+| price            | integer    | null: false                    |
 
 ## Association
 
 - has_many :lists
-- belongs_to :users
+- belongs_to :user
 
 ## purchases テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| item        | reference  | null: false, foreign_key: true |
+| list        | reference  | null: false, foreign_key: true |
 | postal      | string     | null: false                    |
-| prefectures | string     | null: false                    |
-| city        | string     | null: false                    |
+| prefectures | integer    | null: false                    |
+| city        | string     |                                |
 | address     | string     | null: false                    |
 | building    | string     | null: false                    |
 | telephone   | string     | null: false                    |
 
 ## Association
 
-- belongs_to :lists
+- belongs_to :list
