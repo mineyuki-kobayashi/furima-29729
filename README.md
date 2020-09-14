@@ -10,7 +10,7 @@
 | last_name           | string | null: false |
 | first_name_furigana | string | null: false |
 | last_name_furigana  | string | null: false |
-| birthday            | data   | null: false |
+| birthday            | date   | null: false |
 | email               | string | null: false |
 | password            | string | null: false |
 | nickname            | string | null: false |
@@ -31,21 +31,21 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchases
+- has_one :purchase
 
 ## items テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| item_name        | string     | null: false                    |
-| item_explanation | text       | null: false                    |
-| item_category    | integer    | null: false                    |
-| item_status      | integer    | null: false                    |
-| postage          | integer    | null: false                    |
-| source           | integer    | null: false                    |
-| schedule         | integer    | null: false                    |
-| price            | integer    | null: false                    |
+| name             | string     | null: false                    |
+| explanation      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| postage_id       | integer    | null: false                    |
+| source_id        | integer    | null: false                    |
+| schedule_id      | integer    | null: false                    |
+| price_id         | integer    | null: false                    |
 
 ## Association
 
@@ -54,15 +54,15 @@
 
 ## purchases テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| list        | reference  | null: false, foreign_key: true |
-| postal      | string     | null: false                    |
-| prefectures | integer    | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| building    | string     |                                |
-| telephone   | string     | null: false                    |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| list           | reference  | null: false, foreign_key: true |
+| postal         | string     | null: false                    |
+| prefectures_id | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address        | string     | null: false                    |
+| building       | string     |                                |
+| telephone      | string     | null: false                    |
 
 ## Association
 
