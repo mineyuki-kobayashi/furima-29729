@@ -4,17 +4,20 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| first_name | string | null: false |
-| last_name  | string | null: false |
-| birthday   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| first_name          | string | null: false |
+| last_name           | string | null: false |
+| first_name_furigana | string | null: false |
+| last_name_furigana  | string | null: false |
+| birthday            | data   | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| nickname            | string | null: false |
 
 ## Association
 
-- has_one :list
+- has_many :lists
 - has_many :items
 
 ## lists テーブル
@@ -46,7 +49,7 @@
 
 ## Association
 
-- has_many :lists
+- has_one :list
 - belongs_to :user
 
 ## purchases テーブル
@@ -56,9 +59,9 @@
 | list        | reference  | null: false, foreign_key: true |
 | postal      | string     | null: false                    |
 | prefectures | integer    | null: false                    |
-| city        | string     |                                |
+| city        | string     | null: false                    |
 | address     | string     | null: false                    |
-| building    | string     | null: false                    |
+| building    | string     |                                |
 | telephone   | string     | null: false                    |
 
 ## Association
