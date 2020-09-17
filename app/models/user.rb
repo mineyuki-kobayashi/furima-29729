@@ -3,19 +3,28 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+ 
+         #ニックネームが必須であること
          validates :nickname, presence: true
-       
-         validates :first_name, presence: true
-         validates :last_name, presence: true
-         validates :first_name, presence: true
+
+         #生年月日が必須であること
          validates :birthday, presence: true
+         
+         #メールアドレスが必須であること,メールアドレスが一意性であること,メールアドレスは@を含む必要があること
+         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+         validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+        
+         #ユーザー本名が、名字と名前がそれぞれ必須であること,ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること
+         VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+         validates :first_name, presence: true, format:{ with: VALID_NAME_REGEX}
+         validates :last_name, presence: true, format:{ with: VALID_NAME_REGEX}
+     
+         #ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること,ユーザー本名のフリガナは全角（カタカナ）で入力させること
+         VALID_FURIGANA_REGEX =/\A[ァ-ヶー－]+\z/
+         validates :first_name_furigana, presence: true,format: { with: VALID_FURIGANA_REGEX }
+         validates :last_name_furigana, presence: true,format: { with: VALID_FURIGANA_REGEX }
        
-         VALID_NAME_REGEX =/\A[ァ-ヶー－]+\z/
-         validates :first_name_furigana, presence: true,format: { with: VALID_NAME_REGEX }
-         validates :last_name_furigana, presence: true,format: { with: VALID_NAME_REGEX }
-       
+         #パスワードが必須であること,パスワードは6文字以上であること,パスワードは半角英数字混合であること
          VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i
          validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }
-
 end
