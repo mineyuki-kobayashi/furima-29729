@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailに＠がついていないと登録できない' do
-        @user.email = 'test@test'
+        @user.email = 'test'
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
@@ -89,6 +89,16 @@ RSpec.describe User, type: :model do
         @user.last_name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+      it 'first_nameが全角でないとき登録できない' do
+        @user.first_name = "aｱ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it 'last_nameが全角でないとき登録できない' do
+        @user.last_name = "aｱ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
       end
       it 'first_name_furiganaが空だと登録できない' do
         @user.first_name_furigana = nil
