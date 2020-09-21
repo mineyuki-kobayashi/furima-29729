@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  def index; end
+  def index
+    @items =  
+  end
 
   def destroy
     room = User.find(params[:id])
