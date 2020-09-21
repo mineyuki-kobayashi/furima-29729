@@ -1,4 +1,4 @@
-class Genre < ApplicationRecord
+class Genre < ActiveHash::Base
   category.date = [
     { id: 1, name: '--' },
     { id: 2, name: 'レディース' },
