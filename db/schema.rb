@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_020139) do
     t.integer "schedule_id", null: false
     t.integer "price", null: false
     t.bigint "user_id"
+    t.text "explanation", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
