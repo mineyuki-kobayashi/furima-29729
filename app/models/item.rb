@@ -1,8 +1,12 @@
 class Item < ApplicationRecord
   #アソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :postage, :schedule, :source, :status
-  belong_to :user
+  belongs_to_active_hash :category
+  belongs_to_active_hash :postage
+  belongs_to_active_hash :schedule
+  belongs_to_active_hash :source
+  belongs_to_active_hash :status
+  belongs_to :user
   #バリデーション
   validates :user, :name, :explanation, :category, :postage, :schedule, :source, :status, presence: true
   

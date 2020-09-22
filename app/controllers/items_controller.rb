@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    @articles = Item.order("created_at DESC")
+    #@items = Item.order("created_at DESC")
   end
   
   def new
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   private
 
   def article_params
-    params.require(:items).permit(:price,:name,:genre_id)
+    params.require(:items).permit(:price, :name, :category_id, :postage_id, :schedule_id, :source_id, :status_id)
   end
 
   def destroy
