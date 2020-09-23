@@ -7,9 +7,19 @@ class Item < ApplicationRecord
   belongs_to_active_hash :source
   belongs_to_active_hash :status
   belongs_to :user
+  has_one_attached :image
   #バリデーション
-  validates :user, :name, :explanation, :category, :postage, :schedule, :source, :status, presence: true
-  
+  with_options presence: true do
+  validates :user
+  validates :name
+  validates :explanation
+  validates :category
+  validates :postage
+  validates :schedule
+  validates :source 
+  validates :status
+  validates :image
+  end
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :postage_id
