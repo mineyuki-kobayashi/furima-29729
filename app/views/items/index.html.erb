@@ -133,7 +133,7 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" if item.image.attached?%>
               <%# 商品が売れていればsold outを表示しましょう %>
-              
+
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
@@ -182,8 +182,11 @@
   <%# /商品一覧 %>
 </div>
 <div class='purchase-btn'>
+  <% if user_signed_in? %>
   <span><%= link_to '出品する', new_item_path, class: "purchase-btn-text" %></span>
-  
+  <% else %>
+  <span><%= link_to '出品する', new_user_session_path, class: "purchase-btn-text" %></span>
+  <% end %>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>

@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   validates :source 
   validates :status
   validates :image
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000 }, format:{ with:/\A[0-9]+\z/ }
   end
   with_options numericality: { other_than: 1 } do
     validates :category_id
