@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   #バリデーション
   with_options presence: true do
   validates :user
-  validates :name
-  validates :explanation
+  validates :name, length:{ maximum: 40 }
+  validates :explanation, length:{ maximum: 1000 }
   validates :category
   validates :postage
   validates :schedule
