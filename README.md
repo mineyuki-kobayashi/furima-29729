@@ -45,7 +45,8 @@
 | postage_id       | integer    | null: false                    |
 | source_id        | integer    | null: false                    |
 | schedule_id      | integer    | null: false                    |
-| price　　         | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| image            | text       | null: false                    |
 
 ## Association
 
