@@ -20,7 +20,7 @@ class User < ApplicationRecord
     # ユーザー本名が、名字と名前がそれぞれ必須であること,ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること
     VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
     validates :first_name, format: { with: VALID_NAME_REGEX }
-    validates :last_name, format: { with: VALID_NAME_REGEX}
+    validates :last_name, format: { with: VALID_NAME_REGEX }
 
     # ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること,ユーザー本名のフリガナは全角（カタカナ）で入力させること
     VALID_FURIGANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
