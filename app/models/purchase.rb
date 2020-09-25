@@ -1,4 +1,4 @@
 class Purchase < ApplicationRecord
-  #アソシエーション
+  # アソシエーション
   belongs_to :list
 end

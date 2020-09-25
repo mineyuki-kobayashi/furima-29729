@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  #アソシエーション
+  # アソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :postage
@@ -9,18 +9,18 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :list
   has_one_attached :image
-  #バリデーション
+  # バリデーション
   with_options presence: true do
-  validates :user
-  validates :name, length:{ maximum: 40 }
-  validates :explanation, length:{ maximum: 1000 }
-  validates :category
-  validates :postage
-  validates :schedule
-  validates :source 
-  validates :status
-  validates :image
-  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000 }, format:{ with:/\A[0-9]+\z/ }
+    validates :user
+    validates :name, length: { maximum: 40 }
+    validates :explanation, length: { maximum: 1000 }
+    validates :category
+    validates :postage
+    validates :schedule
+    validates :source
+    validates :status
+    validates :image
+    validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }, format: { with: /\A[0-9]+\z/ }
   end
   with_options numericality: { other_than: 1 } do
     validates :category_id
