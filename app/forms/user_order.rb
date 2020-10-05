@@ -15,6 +15,6 @@ class UserOrder
     # 購入者と出品者をリンクさせた情報を@orderに代入
     order = Order.create(user_id: user_id, item_id: item_id)
     # 購入者情報をpurchasesテーブルに保存し、@purchaseに代入
-    Purchase.create!(order_id: order.id, postal: postal, source_id: source_id, city: city, address: address, building: building, telephone: telephone)
+    Purchase.create(order_id: order.id, postal: postal, source_id: source_id, city: city, address: address, building: building, telephone: telephone)
   end
 end
