@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = UserOrder.new
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if (current_user.id == @item.user_id) || @item.order.present?
   end
 
   def create
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def pay_item
-    Payjp.api_key = 'sk_test_fa863f2c894d87a87f7a44b4'  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン

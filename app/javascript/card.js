@@ -1,5 +1,5 @@
 const pay = ()=> {
-  Payjp.setPublicKey("pk_test_36b05bb5be0224dda44775a0"); // PAY.JPテスト公開鍵
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); // PAY.JPテスト公開鍵
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -14,7 +14,6 @@ const pay = ()=> {
     };
 
     Payjp.createToken(card, (status, response) => {
-      console.log(card);
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");

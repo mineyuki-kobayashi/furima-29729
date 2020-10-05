@@ -25,6 +25,10 @@ RSpec.describe UserOrder, type: :model do
         @order.source_id = '2'
         expect(@order).to be_valid
       end
+      it '建物名が空であっても購入できる' do
+        @order.building = nil
+        expect(@order).to be_valid
+      end
     end
     context '商品購入がうまくいかない時' do
       # カード情報
