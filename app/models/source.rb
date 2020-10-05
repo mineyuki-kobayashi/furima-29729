@@ -1,6 +1,7 @@
 class Source < ActiveHash::Base
   include ActiveHash::Associations
   has_many :item
+  has_many :purchase
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '北海道' },
