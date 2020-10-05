@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
 
   belongs_to :user
-  has_one :list
+  has_one :order
   has_one_attached :image
   # バリデーション
   with_options presence: true do

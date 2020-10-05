@@ -47,26 +47,26 @@ ActiveRecord::Schema.define(version: 20_200_923_032_818) do
     t.index ['user_id'], name: 'index_items_on_user_id'
   end
 
-  create_table 'lists', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.bigint 'user_id', null: false
-    t.bigint 'item_id', null: false
+  create_table 'orders', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'item_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.index ['item_id'], name: 'index_lists_on_item_id'
-    t.index ['user_id'], name: 'index_lists_on_user_id'
+    t.index ['item_id'], name: 'index_orders_on_item_id'
+    t.index ['user_id'], name: 'index_orders_on_user_id'
   end
 
   create_table 'purchases', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.bigint 'list_id', null: false
+    t.bigint 'order_id', null: false
     t.string 'postal', null: false
-    t.integer 'prefecture_id', null: false
+    t.integer 'source_id', null: false
     t.string 'city', null: false
     t.string 'address', null: false
     t.string 'building'
     t.string 'telephone', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.index ['list_id'], name: 'index_purchases_on_list_id'
+    t.index ['order_id'], name: 'index_purchases_on_order_id'
   end
 
   create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20_200_923_032_818) do
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'items', 'users'
-  add_foreign_key 'lists', 'items'
-  add_foreign_key 'lists', 'users'
-  add_foreign_key 'purchases', 'lists'
+  add_foreign_key 'orders', 'items'
+  add_foreign_key 'orders', 'users'
+  add_foreign_key 'purchases', 'orders'
 end

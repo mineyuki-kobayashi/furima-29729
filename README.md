@@ -17,10 +17,10 @@
 
 ## Association
 
-- has_many :lists
+- has_many :orders
 - has_many :items
 
-## lists テーブル
+## Orders テーブル
 
 | Column | Type      | Options                        |
 | ------ | --------- | ------------------------------ |
@@ -50,7 +50,7 @@
 
 ## Association
 
-- has_one :list
+- has_one :order
 - belongs_to :user
 
 ## purchases テーブル
@@ -67,4 +67,4 @@
 
 ## Association
 
-- belongs_to :list
+- belongs_to :order
