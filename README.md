@@ -15,6 +15,7 @@
 | password            | string | null: false |
 | nickname            | string | null: false |
 
+
 ## Association
 
 - has_many :orders
